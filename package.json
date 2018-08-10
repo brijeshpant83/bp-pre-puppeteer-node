@@ -1,0 +1,21 @@
+{
+  "name": "bp-pre-puppeteer-node",
+  "version": "1.0.0",
+  "description": "Express middleware for serving static html to bots for SEO",
+  "author": "Brijesh Pant",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "seo",
+    "angularjs",
+    "emberjs",
+    "backbone"
+  ],
+  "dependencies": {
+    "puppeteer": "^1.6.2"
+  }
+}
