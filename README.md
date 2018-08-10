@@ -5,6 +5,8 @@ Google, Facebook, Twitter, Bing, and Yahoo are constantly trying to view your we
 
 This middleware intercepts requests to your Node.js website from crawlers, and then makes a call to puppeteer plugin to get the static HTML instead of the JavaScript on the page.
 
+This lib requires at least Node v6.4.0, but the examples use async/await which is only supported in Node v7.6.0 or greater.
+
 via npm:
 
     $ npm install bp-pre-puppeteer-node --save

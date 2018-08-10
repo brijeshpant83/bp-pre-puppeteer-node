@@ -1,13 +1,13 @@
 {
   "name": "bp-pre-puppeteer-node",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Express middleware for serving static html to bots for SEO",
   "author": "Brijesh Pant",
   "license": "MIT",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git@github.com:brijeshpant83/bp-pre-puppeteer-node.git"
   },
   "keywords": [
     "seo",
