@@ -6,14 +6,31 @@ var HTMLRender = module.exports = function(req, res, next) {
   var urltocrawel = HTMLRender.buildApiUrl(req);
 
   if(urltocrawel){
-    (async () => {
-      const browser = await puppeteer.launch();
-      const page = await browser.newPage();
-      await page.goto(urltocrawel, {waitUntil: 'networkidle2'});
-      const html = await page.content();
-      await browser.close();    
-      return res.end(html || '');
-    })();  
+
+    try {
+      (async () => {
+        const browser = await puppeteer.launch();
+        const page = await browser.newPage();
+        await page.goto(urltocrawel, {waitUntil: 'networkidle2'});
+        const html = await page.content();
+        await browser.close();    
+        return res.end(html || '');
+      })();  
+    } catch (error) {
+      puppeteer.launch().then(browser => {
+        browser.newPage().then(page => {
+          page
+            .goto(urltocrawel, { waitUntil: 'networkidle2' })
+            .then(function (){
+              return page.content()
+            })
+            .then((resthtml) => {
+              browser.close();
+              return res.end(resthtml || '');
+            });
+        });
+      });
+    }
   }else{
     return res.end('');
   }
