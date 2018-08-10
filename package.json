@@ -1,6 +1,6 @@
 {
   "name": "bp-pre-puppeteer-node",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Express middleware for serving static html to bots for SEO",
   "author": "Brijesh Pant",
   "license": "MIT",
