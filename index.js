@@ -7,7 +7,21 @@ var HTMLRender = module.exports = function(req, res, next) {
 
   if(urltocrawel){
 
-    try {
+    puppeteer.launch().then(browser => {
+      browser.newPage().then(page => {
+        page
+          .goto(urltocrawel, { waitUntil: 'networkidle2' })
+          .then(function (){
+            return page.content()
+          })
+          .then((resthtml) => {
+            browser.close();
+            return res.end(resthtml || '');
+          });
+      });
+    });
+    
+    /*try {
       (async () => {
         const browser = await puppeteer.launch();
         const page = await browser.newPage();
@@ -30,7 +44,7 @@ var HTMLRender = module.exports = function(req, res, next) {
             });
         });
       });
-    }
+    }*/
   }else{
     return res.end('');
   }
